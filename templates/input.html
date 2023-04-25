@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %} Add Recipe {% endblock %}
+
+{% block body %}
+<div class="card-body">
+    <!-- Form to add new recipe-->
+    <form action="{{ url_for('input_data') }}" method="POST">
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <label for="name" class="form-label">Recipe Name</label>
+                <input type="text" id="name" class="form-control" placeholder="Recipe Name" name="name">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <label for="servings" class="form-label">Servings</label>
+                <input type="text" id="servings" class="form-control" placeholder="Servings" name="servings">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-8">
+                <label for="ingredients" class="form-label">Ingredients</label>
+                <textarea class="form-control" id="ingredients" rows="3" placeholder="Enter Ingretients..."
+                    name="ingredients"></textarea>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-8">
+                <label for="instructions" class="form-label">Instructions</label>
+                <textarea class="form-control" id="instructions" rows="3" placeholder="Enter Instructions..."
+                    name="instructions"></textarea>
+            </div>
+        </div>
+        <!-- Submit and Cancel buttons -->
+        <div class="form-group">
+            <button type="submit" class="btn btn-success btn-sm" name="submit">Submit</button>
+            <a href="{{ url_for('index') }}" class="btn btn-danger btn-sm">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
