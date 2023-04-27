@@ -1,5 +1,10 @@
+# Eliza Knight
+# Spring 2023
 from flask import Flask, render_template, redirect, url_for, request, flash
 from flask_sqlalchemy import SQLAlchemy
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 app = Flask(__name__)
 
@@ -54,6 +59,7 @@ def input_data():
 
         # Flashing a message
         flash("Recipe Added Successfully!!")
+        logging.info("Recipe Created")
 
         return redirect(url_for('index'))   # Redirecting to the index page
 
@@ -76,6 +82,7 @@ def save_edit():
     db.session.commit()
 
     flash('Recipe Edited Successfully!!')
+    logging.info("Recipe Edited")
 
     return redirect(url_for('index'))
 
@@ -88,6 +95,7 @@ def delete(id):
     db.session.commit()
 
     flash('Data Deleted Successfully.')
+    logging.info("Recipe Deleted")
 
     return redirect(url_for('index'))
 
